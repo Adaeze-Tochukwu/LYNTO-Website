@@ -864,42 +864,81 @@
     }
 
     .waitlist-form {
-      display: flex;
-      gap: 0;
-      max-width: 480px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      max-width: 640px;
       margin: 0 auto;
-      border-radius: 50px;
-      overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+      text-align: left;
     }
 
-    .waitlist-form input {
-      flex: 1;
-      padding: 1rem 1.5rem;
-      border: none;
-      font-size: 0.95rem;
+    .waitlist-form .form-full { grid-column: 1 / -1; }
+
+    .waitlist-form label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.5px;
+      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+    }
+
+    .waitlist-form input,
+    .waitlist-form select,
+    .waitlist-form textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
       font-family: 'Inter', sans-serif;
       outline: none;
-      background: rgba(255,255,255,0.95);
-      color: var(--gray-800);
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      transition: border-color 0.2s ease, background 0.2s ease;
     }
 
-    .waitlist-form input::placeholder { color: var(--gray-400); }
+    .waitlist-form input::placeholder,
+    .waitlist-form textarea::placeholder { color: rgba(255,255,255,0.35); }
+
+    .waitlist-form select option { color: var(--gray-800); background: #fff; }
+
+    .waitlist-form input:focus,
+    .waitlist-form select:focus,
+    .waitlist-form textarea:focus {
+      border-color: rgba(255,255,255,0.55);
+      background: rgba(255,255,255,0.18);
+    }
+
+    .waitlist-form textarea { resize: vertical; min-height: 90px; }
 
     .waitlist-form button {
+      grid-column: 1 / -1;
       padding: 1rem 1.8rem;
       background: var(--red);
       color: #fff;
       border: none;
-      font-size: 0.95rem;
+      border-radius: 50px;
+      font-size: 1rem;
       font-weight: 700;
       font-family: 'Inter', sans-serif;
       cursor: pointer;
-      white-space: nowrap;
-      transition: background 0.2s ease;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      margin-top: 0.5rem;
     }
 
-    .waitlist-form button:hover { background: #aa1c00; }
+    .waitlist-form button:hover {
+      background: #aa1c00;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(204,34,0,0.4);
+    }
 
     .pilot-note {
       margin-top: 1.2rem;
@@ -1071,8 +1110,8 @@
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
       .features-grid { grid-template-columns: 1fr; }
-      .waitlist-form { flex-direction: column; border-radius: var(--radius); overflow: visible; }
-      .waitlist-form input, .waitlist-form button { border-radius: 50px; }
+      .waitlist-form { grid-template-columns: 1fr; padding: 1.5rem; }
+      .waitlist-form .form-full { grid-column: 1; }
       .footer-inner { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; text-align: center; }
       .problem-stat-grid { grid-template-columns: 1fr; }
@@ -1432,8 +1471,63 @@
       <p>We're currently onboarding a select group of pilot agencies. Get early access, shape the product, and provide better care — starting today.</p>
 
       <form class="waitlist-form" id="waitlist-form" onsubmit="handleSubmit(event)">
-        <input type="email" id="email-input" placeholder="Enter your agency email address" required />
-        <button type="submit">Join Waitlist →</button>
+        <div>
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" placeholder="Jane" required />
+        </div>
+        <div>
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" placeholder="Smith" required />
+        </div>
+        <div>
+          <label for="email-input">Work Email</label>
+          <input type="email" id="email-input" placeholder="jane@agency.co.uk" required />
+        </div>
+        <div>
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="+44 7700 000000" />
+        </div>
+        <div>
+          <label for="company">Agency / Company Name</label>
+          <input type="text" id="company" placeholder="Sunrise Care Ltd" required />
+        </div>
+        <div>
+          <label for="role">Your Role</label>
+          <select id="role" required>
+            <option value="" disabled selected>Select your role</option>
+            <option>Agency Manager / Director</option>
+            <option>Care Coordinator</option>
+            <option>Operations Lead</option>
+            <option>IT / Systems Admin</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="agency-size">Agency Size</label>
+          <select id="agency-size">
+            <option value="" disabled selected>Number of carers</option>
+            <option>1–10</option>
+            <option>11–50</option>
+            <option>51–150</option>
+            <option>150+</option>
+          </select>
+        </div>
+        <div>
+          <label for="hear-about">How did you hear about us?</label>
+          <select id="hear-about">
+            <option value="" disabled selected>Select one</option>
+            <option>Google / Search</option>
+            <option>LinkedIn</option>
+            <option>Referral / Word of mouth</option>
+            <option>Industry event</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-full">
+          <label for="message">Anything you'd like us to know? (optional)</label>
+          <textarea id="message" placeholder="Tell us about your current challenges or what you're looking for…"></textarea>
+        </div>
+        <button type="submit">Request Early Access →</button>
       </form>
 
       <p class="pilot-note">No commitment required. We'll be in touch within 48 hours.</p>
@@ -1565,22 +1659,22 @@
       hamburger.querySelectorAll('span')[2].style.transform = '';
     }
 
-    // Waitlist form
+    // Contact form
     function handleSubmit(e) {
       e.preventDefault();
-      const email = document.getElementById('email-input').value;
-      if (!email) return;
+      const firstName = document.getElementById('first-name').value.trim();
+      const email = document.getElementById('email-input').value.trim();
+      if (!firstName || !email) return;
 
-      // Simulate submission
       const btn = e.target.querySelector('button');
-      btn.textContent = '✓ Joined!';
+      btn.textContent = '✓ Request Sent!';
       btn.style.background = '#1a8a1a';
-      document.getElementById('email-input').value = '';
+      e.target.reset();
 
-      showToast(`You're on the waitlist! We'll contact ${email} within 48 hours.`);
+      showToast(`Thanks ${firstName}! We'll be in touch at ${email} within 48 hours.`);
 
       setTimeout(() => {
-        btn.textContent = 'Join Waitlist →';
+        btn.textContent = 'Request Early Access →';
         btn.style.background = '';
       }, 4000);
     }
