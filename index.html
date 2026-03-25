@@ -636,52 +636,20 @@
     .how-header { text-align: center; margin-bottom: 5rem; }
 
     .steps-container {
+      display: flex;
+      flex-direction: column;
+      gap: 5rem;
+    }
+
+    .step-row {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      position: relative;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
     }
 
-    .steps-connector {
-      position: absolute;
-      top: 55px;
-      left: calc(16.67% + 28px);
-      right: calc(16.67% + 28px);
-      height: 2px;
-      background: linear-gradient(90deg, var(--green), var(--green-light));
-      z-index: 0;
-    }
-
-    .steps-connector::before,
-    .steps-connector::after {
-      content: '›';
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--green);
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-
-    .steps-connector::before { left: 33%; }
-    .steps-connector::after { left: 66%; }
-
-    .step-card {
-      background: #fff;
-      border-radius: var(--radius-xl);
-      padding: 2.5rem 2rem;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-      box-shadow: var(--shadow-md);
-      border: 1px solid rgba(45,122,45,0.08);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .step-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-xl);
-    }
+    .step-row.reverse { direction: rtl; }
+    .step-row.reverse > * { direction: ltr; }
 
     .step-number {
       width: 52px; height: 52px;
@@ -690,30 +658,40 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 1.5rem;
+      margin-bottom: 1.5rem;
       font-size: 1.3rem;
       font-weight: 800;
       color: #fff;
       box-shadow: 0 6px 20px rgba(45,122,45,0.35);
     }
 
-    .step-emoji {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .step-card h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
+    .step-content h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
       color: var(--gray-900);
       margin-bottom: 0.75rem;
+      letter-spacing: -0.5px;
     }
 
-    .step-card p {
-      font-size: 0.9rem;
+    .step-content p {
+      font-size: 1rem;
       color: var(--gray-600);
-      line-height: 1.6;
+      line-height: 1.7;
+    }
+
+    .step-image img {
+      width: 100%;
+      max-width: 300px;
+      display: block;
+      margin: 0 auto;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.15), 0 4px 16px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .step-image img:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 36px 80px rgba(0,0,0,0.2), 0 8px 24px rgba(0,0,0,0.1);
     }
 
     /* ─── WHO IS IT FOR ─── */
@@ -1100,8 +1078,9 @@
       .features-grid { grid-template-columns: repeat(2, 1fr); }
       .problem-inner { grid-template-columns: 1fr; gap: 3rem; }
       .problem-visual { display: none; }
-      .steps-container { grid-template-columns: 1fr; gap: 1.5rem; }
-      .steps-connector { display: none; }
+      .step-row { grid-template-columns: 1fr; gap: 2rem; }
+      .step-row.reverse { direction: ltr; }
+      .step-image { order: -1; }
       .who-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
       .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
     }
@@ -1372,28 +1351,43 @@
       </div>
 
       <div class="steps-container">
-        <div class="steps-connector"></div>
 
-        <div class="step-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="step-number">1</div>
-          <span class="step-emoji">🏢</span>
-          <h3>Agency Sets Up</h3>
-          <p>Register your agency, add your carers and clients, configure care plans and alert thresholds — all in minutes from the admin panel.</p>
+        <!-- Step 1 -->
+        <div class="step-row" data-aos="fade-up">
+          <div class="step-content">
+            <div class="step-number">1</div>
+            <h3>Agency Sets Up</h3>
+            <p>Register your agency, add your carers and clients, configure care plans and alert thresholds — all in minutes from the admin panel. Each client gets their own profile with assigned carers and a full history log.</p>
+          </div>
+          <div class="step-image" data-aos="fade-left" data-aos-delay="150">
+            <img src="client-overview.png" alt="Client Overview — Lynto" />
+          </div>
         </div>
 
-        <div class="step-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="step-number">2</div>
-          <span class="step-emoji">📲</span>
-          <h3>Carers Log in the Field</h3>
-          <p>Carers use the Lynto mobile app to check in on arrival, record patient observations, medications, and complete visits on the go.</p>
+        <!-- Step 2 -->
+        <div class="step-row reverse" data-aos="fade-up">
+          <div class="step-content">
+            <div class="step-number">2</div>
+            <h3>Carers Log in the Field</h3>
+            <p>Carers use the Lynto mobile app to check in on arrival, complete guided patient assessments, record observations and medications — and submit visits on the go, even with poor connectivity.</p>
+          </div>
+          <div class="step-image" data-aos="fade-right" data-aos-delay="150">
+            <img src="carer-mobile.png" alt="Carer Mobile Assessment — Lynto" />
+          </div>
         </div>
 
-        <div class="step-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="step-number">3</div>
-          <span class="step-emoji">🖥️</span>
-          <h3>Managers Monitor Everything</h3>
-          <p>Receive instant alerts for any concerns. View the live dashboard for real-time status across all patients, carers, and visits — anywhere, anytime.</p>
+        <!-- Step 3 -->
+        <div class="step-row" data-aos="fade-up">
+          <div class="step-content">
+            <div class="step-number">3</div>
+            <h3>Managers Monitor Everything</h3>
+            <p>Receive instant amber and red alerts the moment a concern is flagged. View the live dashboard for real-time status across all patients, carers, and active visits — anywhere, anytime.</p>
+          </div>
+          <div class="step-image" data-aos="fade-left" data-aos-delay="150">
+            <img src="dashboard.png" alt="Manager Dashboard — Lynto" />
+          </div>
         </div>
+
       </div>
     </div>
   </section>
