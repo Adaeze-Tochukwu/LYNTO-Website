@@ -786,19 +786,34 @@
 
     .who-card:hover::after { transform: scaleX(1); }
 
-    .who-avatar {
-      width: 80px; height: 80px;
+    .who-photo-wrap {
+      width: 96px;
+      height: 96px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.2rem;
       margin: 0 auto 1.5rem;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      flex-shrink: 0;
     }
 
-    .who-card:nth-child(1) .who-avatar { background: linear-gradient(135deg, #e8f5e8, #c6e8c6); }
-    .who-card:nth-child(2) .who-avatar { background: linear-gradient(135deg, #fff0ee, #ffd0cc); }
-    .who-card:nth-child(3) .who-avatar { background: linear-gradient(135deg, #e8f0ff, #c6d8ff); }
+    .who-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      /* Unified colour grade: normalise warmth, slightly boost contrast */
+      filter: brightness(1.03) contrast(1.05) saturate(0.90);
+      transition: transform 0.4s ease;
+    }
+
+    .who-card:hover .who-photo-wrap img { transform: scale(1.06); }
+
+    /* Per-card accent ring matching brand colours */
+    .who-card:nth-child(1) .who-photo-wrap { outline: 3px solid var(--green-light); outline-offset: 3px; }
+    .who-card:nth-child(2) .who-photo-wrap { outline: 3px solid #4a9fd4;           outline-offset: 3px; }
+    .who-card:nth-child(3) .who-photo-wrap { outline: 3px solid var(--green);       outline-offset: 3px; }
 
     .who-card h3 {
       font-size: 1.15rem;
@@ -1467,7 +1482,9 @@
 
       <div class="who-grid">
         <div class="who-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="who-avatar">🏥</div>
+          <div class="who-photo-wrap">
+            <img src="persona-manager.png" alt="Care Agency Manager" />
+          </div>
           <h3>Care Agency Managers</h3>
           <p>Lead with confidence. Get full visibility across your team, patients, and operations — all from a single live dashboard.</p>
           <ul class="who-perks">
@@ -1479,7 +1496,9 @@
         </div>
 
         <div class="who-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="who-avatar">👩‍⚕️</div>
+          <div class="who-photo-wrap">
+            <img src="persona-carer.png" alt="Carer & Care Worker" />
+          </div>
           <h3>Carers & Care Workers</h3>
           <p>Focus on care, not paperwork. Log everything on your phone in seconds and let Lynto handle the documentation.</p>
           <ul class="who-perks">
@@ -1491,7 +1510,9 @@
         </div>
 
         <div class="who-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="who-avatar">⚙️</div>
+          <div class="who-photo-wrap">
+            <img src="persona-admin.png" alt="Platform Administrator" />
+          </div>
           <h3>Platform Administrators</h3>
           <p>Manage the platform with full control. Oversee agencies, users, system health, and configurations from a powerful admin console.</p>
           <ul class="who-perks">
