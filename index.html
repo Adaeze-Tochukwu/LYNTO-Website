@@ -492,19 +492,36 @@
     }
 
     .problem-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      text-align: center;
+      gap: 3rem;
     }
+
+    .problem-content { max-width: 720px; }
 
     .problem-content .section-label { color: var(--red); background: #fff0ee; }
 
     .problem-stat-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.2rem;
       margin-top: 2rem;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .problem-image-wrap {
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .problem-image-wrap img {
+      width: 100%;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.08);
+      display: block;
     }
 
     .problem-stat {
@@ -1115,8 +1132,7 @@
       .hero-image-wrap { order: -1; }
       .hero-image-wrap img { max-width: 420px; }
       .features-grid { grid-template-columns: repeat(2, 1fr); }
-      .problem-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .problem-visual { display: none; }
+      .problem-stat-grid { grid-template-columns: repeat(2, 1fr); }
       .step-row { grid-template-columns: 1fr; gap: 2rem; }
       .step-row.reverse { direction: ltr; }
       .step-image { order: -1; }
@@ -1274,12 +1290,13 @@
   <section id="problem">
     <div class="section-inner">
       <div class="problem-inner">
-        <div class="problem-content" data-aos="fade-right">
+
+        <div class="problem-content" data-aos="fade-up">
           <span class="section-label">The Challenge</span>
           <h2 class="section-title" style="margin-bottom:1.2rem;">
             Home care agencies are flying blind.
           </h2>
-          <p class="section-sub" style="margin-bottom:1.5rem;">
+          <p class="section-sub" style="margin:0 auto 1.5rem;">
             When carers can't log visits in real time and managers lack instant visibility, patients fall through the cracks. Delayed alerts, missed check-ins, and poor coordination put vulnerable people at risk every single day.
           </p>
 
@@ -1303,19 +1320,10 @@
           </div>
         </div>
 
-        <div class="problem-visual" data-aos="fade-left" data-aos-delay="200">
-          <div class="problem-illustration">
-            <div class="problem-icon-main">⚠️</div>
-            <ul class="problem-list">
-              <li><span class="icon">✗</span> Missed visits with no immediate alert</li>
-              <li><span class="icon">✗</span> Paper-based observations prone to errors</li>
-              <li><span class="icon">✗</span> No real-time health status for managers</li>
-              <li><span class="icon">✗</span> Delayed escalation of patient concerns</li>
-              <li><span class="icon">✗</span> Poor coordination between carers and admin</li>
-              <li><span class="icon">✗</span> Compliance gaps and audit risk</li>
-            </ul>
-          </div>
+        <div class="problem-image-wrap" data-aos="fade-up" data-aos-delay="200">
+          <img src="problem-illustration.png" alt="Before and after Lynto — chaotic vs. managed home care workflow" />
         </div>
+
       </div>
     </div>
   </section>
