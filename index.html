@@ -865,6 +865,24 @@
       flex-shrink: 0;
     }
 
+    .who-card-image {
+      margin: -2.5rem -2rem 1.75rem;
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+    }
+
+    .who-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .who-card:hover .who-card-image img { transform: scale(1.04); }
+
     /* ─── PILOT BANNER ─── */
     #pilot {
       padding: 100px 0;
@@ -1660,6 +1678,9 @@
         </div>
 
         <div class="who-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="who-card-image">
+            <img src="Carer.png" alt="Carer using Lynto on their smartphone at a client's door" />
+          </div>
           <div class="who-avatar">👩‍⚕️</div>
           <h3>Carers & Care Workers</h3>
           <p>You do not need to know what is wrong. Simply tell Lynto what you have seen, and the guided wizard will ask the right questions, ensuring your observations are always recorded properly and concerns reach the right person quickly.</p>
