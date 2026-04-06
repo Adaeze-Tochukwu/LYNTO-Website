@@ -1189,6 +1189,7 @@
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
       <li><a href="#how-it-works">How it Works</a></li>
+      <li><a href="#demo">See it in Action</a></li>
       <li><a href="#who">For Who</a></li>
       <li><a href="#pilot">Pilot Programme</a></li>
     </ul>
@@ -1204,6 +1205,7 @@
   <div class="mobile-menu" id="mobile-menu">
     <a href="#features" onclick="closeMobile()">Features</a>
     <a href="#how-it-works" onclick="closeMobile()">How it Works</a>
+    <a href="#demo" onclick="closeMobile()">See it in Action</a>
     <a href="#who" onclick="closeMobile()">For Who</a>
     <a href="#pilot" onclick="closeMobile()">Pilot Programme</a>
     <a href="#pilot" class="btn-primary" style="text-align:center;" onclick="closeMobile()">Join the Pilot</a>
@@ -1505,9 +1507,33 @@
   </section>
 
   <!-- Wave 4 -->
-  <div class="wave-divider" style="background:#fff;">
+  <div class="wave-divider" style="background:var(--green-dark);">
     <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
       <path d="M0,60 C360,0 1080,80 1440,20 L1440,80 L0,80 Z" fill="#e8f5e8"/>
+    </svg>
+  </div>
+
+  <!-- ─── SEE IT IN ACTION ─── -->
+  <section id="demo" style="background: var(--green-dark); padding: 5rem 2rem;">
+    <div class="section-inner" style="max-width: 960px;">
+      <div data-aos="fade-up" style="text-align: center; margin-bottom: 2.5rem;">
+        <span class="section-label" style="background: rgba(255,255,255,0.12); color: #a3e6a3;">See it in Action</span>
+        <h2 class="section-title" style="color: #fff; margin-bottom: 1rem;">Watch Lynto work.</h2>
+        <p class="section-sub" style="color: rgba(255,255,255,0.72); margin: 0 auto;">See how Lynto's guided observation wizard and real-time alert system work together to keep clients safer.</p>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="100" style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-xl);">
+        <video controls style="width: 100%; display: block;" preload="metadata">
+          <source src="LYNTO-website%20video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave Demo to Scenario -->
+  <div class="wave-divider" style="background: #fff;">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C480,80 960,0 1440,50 L1440,80 L0,80 Z" fill="var(--green-dark)"/>
     </svg>
   </div>
 
@@ -1515,7 +1541,7 @@
   <section id="scenario" style="background:#fff; padding:5rem 2rem;">
     <div class="section-inner" style="max-width:900px;">
       <div data-aos="fade-up" style="text-align:center; margin-bottom:3rem;">
-        <span class="section-label">See it in Action</span>
+        <span class="section-label">A Real Example</span>
         <h2 class="section-title" style="margin-bottom:1rem;">How Lynto detects a pattern before it becomes a crisis.</h2>
         <p class="section-sub" style="margin:0 auto;">Small changes, day by day. Individually easy to miss. Together, they form a warning sign.</p>
       </div>
@@ -1545,13 +1571,6 @@
         <p style="font-size:1.15rem; font-weight:700; line-height:1.6; margin:0;">Lynto detects the pattern and alerts the manager <em>before</em> the crisis.</p>
       </div>
 
-      <!-- Video placeholder -->
-      <div data-aos="fade-up" data-aos-delay="200" style="background:var(--gray-100); border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; border:2px dashed var(--gray-200);">
-        <div style="text-align:center; color:var(--gray-400);">
-          <div style="font-size:3.5rem; margin-bottom:0.75rem; opacity:0.5;">▶</div>
-          <p style="font-size:1rem; font-weight:600;">Video coming soon</p>
-        </div>
-      </div>
     </div>
   </section>
 
